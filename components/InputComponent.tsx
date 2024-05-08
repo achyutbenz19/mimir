@@ -1,15 +1,9 @@
 "use client";
+import { InputComponentProps } from '@/lib/types';
 import { useState, useRef } from 'react';
 import { useDropzone, DropzoneOptions } from 'react-dropzone';
-
-interface InputComponentProps {
-  onSubmit: (formData: FormData) => void;
-  useTTS: boolean;
-  useInternet: boolean;
-  usePhotos: boolean;
-  useLudicrousMode: boolean;
-  useRabbitMode: boolean;
-}
+import { Button } from './ui/button';
+import { MicIcon } from 'lucide-react';
 
 const InputComponent: React.FC<InputComponentProps> = ({
   onSubmit,
@@ -81,67 +75,14 @@ const InputComponent: React.FC<InputComponentProps> = ({
   };
 
   return (
-    <div className="absolute top-1/2 left-8 transform -translate-y-1/2 flex items-center justify-center max-w-[300px]">
-      <div className="relative">
-        {useRabbitMode ? (
-          <button
-            onMouseDown={handleRecording}
-            onMouseUp={handleRecording}
-            onTouchStart={handleRecording}
-            onTouchEnd={handleRecording}
-            className="absolute top-0 left-[200px] right-0 w-full h-full bg-green-500 rounded-md flex items-center justify-center cursor-pointer"
-          >
-            <div className="text-center">
-              <p className={`text-md text-gray-500 rounded-xl p-10 text-white w-full ${recording ? 'bg-red-500' : 'bg-green-500'} prevent-image-drag cursor-pointer`}></p>
-            </div>
-          </button>
-        ) : (
-          <img
-            src="https://developersdigest.s3.amazonaws.com/pin.png"
-            alt="Second"
-            className={`w-full ${recording ? '' : ''} prevent-image-drag cursor-pointer`}
-            onMouseDown={handleRecording}
-            onMouseUp={handleRecording}
-            onTouchStart={handleRecording}
-            onTouchEnd={handleRecording}
-          />
-        )}
-        {recording && (
-          <div className="absolute top-[99px] right-[39px]">
-            <div className="w-2 h-2 bg-red-500 rounded-full shadow-pulse"></div>
-          </div>
-        )}
-        {usePhotos && (
-          <div className={`absolute ${useRabbitMode? '-top-[220px]': '-top-[200px] right-0'} left-0  flex flex-col items-center min-w-[300px]`}>
-            <div
-              {...getRootProps()}
-              className={`w-full h-40 border-2 border-dashed ${isDragActive ? 'border-blue-500' : 'border-gray-400'
-                } rounded-md flex items-center justify-center cursor-pointer`}
-            >
-              <input {...getInputProps()} />
-              {selectedImage ? (
-                <img
-                  src={URL.createObjectURL(selectedImage)}
-                  alt="Selected"
-                  className="max-w-full max-h-full object-contain"
-                />
-              ) : (
-                <div className="p-4 text-center">
-                  <p className="text-gray-500">Drag and drop an image here</p>
-                  <p className="text-gray-500 text-sm">.png, .jpg, .jpeg, .webp, .gif</p>
-                </div>
-              )}
-            </div>
-            {selectedImage && (
-              <button
-                onClick={removeImage}
-                className="mt-2 text-sm text-red-500 hover:text-red-700 focus:outline-none"
-              >
-                Remove Image
-              </button>
-            )}
-          </div>
-        )}
+    <div className="flex w-full flex-col items-center justify-center absolute bottom-0 mb-10">
+      <div className="flex items-center justify-center w-full max-w-md">
+        <Button onMouseDown={handleRecording}
+          onMouseUp={handleRecording}
+          onTouchStart={handleRecording}
+          onTouchEnd={handleRecording} className="flex items-center justify-center w-full h-20 rounded-full" variant="outline">
+          <MicIcon className="w-8 h-8" />
+        </Button>
       </div>
     </div>
   );
