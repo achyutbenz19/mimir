@@ -1,6 +1,6 @@
 "use client";
-import { useState, useRef } from 'react';
-import { useDropzone, DropzoneOptions } from 'react-dropzone';
+import { useState, useRef } from "react";
+import { useDropzone, DropzoneOptions } from "react-dropzone";
 
 interface InputComponentProps {
   onSubmit: (formData: FormData) => void;
@@ -29,10 +29,10 @@ const InputComponent: React.FC<InputComponentProps> = ({
       setSelectedImage(acceptedFiles[0]);
     },
     accept: {
-      'image/png': ['.png'],
-      'image/jpeg': ['.jpeg', '.jpg'],
-      'image/webp': ['.webp'],
-      'image/gif': ['.gif'],
+      "image/png": [".png"],
+      "image/jpeg": [".jpeg", ".jpg"],
+      "image/webp": [".webp"],
+      "image/gif": [".gif"],
     },
   } as DropzoneOptions);
 
@@ -51,11 +51,14 @@ const InputComponent: React.FC<InputComponentProps> = ({
 
   const startRecording = () => {
     navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
-      const options = { mimeType: 'audio/webm' };
+      const options = { mimeType: "audio/webm" };
       mediaRecorderRef.current = new MediaRecorder(stream, options);
-      mediaRecorderRef.current.addEventListener('dataavailable', (event: BlobEvent) => {
-        chunksRef.current.push(event.data);
-      });
+      mediaRecorderRef.current.addEventListener(
+        "dataavailable",
+        (event: BlobEvent) => {
+          chunksRef.current.push(event.data);
+        },
+      );
       mediaRecorderRef.current.start();
     });
   };
@@ -63,16 +66,16 @@ const InputComponent: React.FC<InputComponentProps> = ({
   const stopRecording = async () => {
     if (mediaRecorderRef.current) {
       mediaRecorderRef.current.stop();
-      mediaRecorderRef.current.addEventListener('stop', async () => {
-        const audioBlob = new Blob(chunksRef.current, { type: 'audio/webm' });
+      mediaRecorderRef.current.addEventListener("stop", async () => {
+        const audioBlob = new Blob(chunksRef.current, { type: "audio/webm" });
         const formData = new FormData();
-        formData.append('audio', audioBlob);
-        formData.append('useTTS', String(useTTS));
-        formData.append('useInternet', String(useInternet));
-        formData.append('usePhotos', String(usePhotos));
-        formData.append('useLudicrousMode', String(useLudicrousMode));
+        formData.append("audio", audioBlob);
+        formData.append("useTTS", String(useTTS));
+        formData.append("useInternet", String(useInternet));
+        formData.append("usePhotos", String(usePhotos));
+        formData.append("useLudicrousMode", String(useLudicrousMode));
         if (selectedImage) {
-          formData.append('image', selectedImage, selectedImage.name);
+          formData.append("image", selectedImage, selectedImage.name);
         }
         onSubmit(formData);
         chunksRef.current = [];
@@ -92,14 +95,20 @@ const InputComponent: React.FC<InputComponentProps> = ({
             className="absolute top-0 left-[200px] right-0 w-full h-full bg-green-500 rounded-md flex items-center justify-center cursor-pointer"
           >
             <div className="text-center">
-              <p className={`text-md text-gray-500 rounded-xl p-10 text-white w-full ${recording ? 'bg-red-500' : 'bg-green-500'} prevent-image-drag cursor-pointer`}></p>
+              <p
+                className={`text-md text-gray-500 rounded-xl p-10 text-white w-full ${
+                  recording ? "bg-red-500" : "bg-green-500"
+                } prevent-image-drag cursor-pointer`}
+              ></p>
             </div>
           </button>
         ) : (
           <img
             src="https://developersdigest.s3.amazonaws.com/pin.png"
             alt="Second"
-            className={`w-full ${recording ? '' : ''} prevent-image-drag cursor-pointer`}
+            className={`w-full ${
+              recording ? "" : ""
+            } prevent-image-drag cursor-pointer`}
             onMouseDown={handleRecording}
             onMouseUp={handleRecording}
             onTouchStart={handleRecording}
@@ -112,11 +121,16 @@ const InputComponent: React.FC<InputComponentProps> = ({
           </div>
         )}
         {usePhotos && (
-          <div className={`absolute ${useRabbitMode? '-top-[220px]': '-top-[200px] right-0'} left-0  flex flex-col items-center min-w-[300px]`}>
+          <div
+            className={`absolute ${
+              useRabbitMode ? "-top-[220px]" : "-top-[200px] right-0"
+            } left-0  flex flex-col items-center min-w-[300px]`}
+          >
             <div
               {...getRootProps()}
-              className={`w-full h-40 border-2 border-dashed ${isDragActive ? 'border-blue-500' : 'border-gray-400'
-                } rounded-md flex items-center justify-center cursor-pointer`}
+              className={`w-full h-40 border-2 border-dashed ${
+                isDragActive ? "border-blue-500" : "border-gray-400"
+              } rounded-md flex items-center justify-center cursor-pointer`}
             >
               <input {...getInputProps()} />
               {selectedImage ? (
@@ -128,7 +142,9 @@ const InputComponent: React.FC<InputComponentProps> = ({
               ) : (
                 <div className="p-4 text-center">
                   <p className="text-gray-500">Drag and drop an image here</p>
-                  <p className="text-gray-500 text-sm">.png, .jpg, .jpeg, .webp, .gif</p>
+                  <p className="text-gray-500 text-sm">
+                    .png, .jpg, .jpeg, .webp, .gif
+                  </p>
                 </div>
               )}
             </div>
