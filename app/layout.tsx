@@ -17,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={GeistSans.className}>
+      <body className={`${GeistSans.className} tracking-wide`}>
         <ThemeProvider attribute="class">
           <AI>
             <main>

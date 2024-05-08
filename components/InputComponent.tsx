@@ -4,6 +4,7 @@ import { useState, useRef } from "react";
 import { useDropzone, DropzoneOptions } from "react-dropzone";
 import { Button } from "./ui/button";
 import { MicIcon } from "lucide-react";
+import { motion } from "framer-motion";
 
 const InputComponent: React.FC<InputComponentProps> = ({
   onSubmit,
@@ -35,11 +36,11 @@ const InputComponent: React.FC<InputComponentProps> = ({
   };
 
   const handleRecording = () => {
-    if (recording) {
-      stopRecording();
-    } else {
-      startRecording();
-    }
+    // if (recording) {
+    //   stopRecording();
+    // } else {
+    //   startRecording();
+    // }
     setRecording(!recording);
   };
 
@@ -79,6 +80,16 @@ const InputComponent: React.FC<InputComponentProps> = ({
 
   return (
     <div className="flex w-full flex-col items-center justify-center absolute bottom-0 mb-10">
+      {recording && (
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          className="mb-5 font-serif tracking-wider font-semi-bold text-2xl"
+        >
+          Listening...
+        </motion.div>
+      )}
       <div className="flex items-center justify-center w-full max-w-md">
         <Button
           onMouseDown={handleRecording}
