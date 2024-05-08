@@ -1,4 +1,4 @@
-import { config } from "@/app/config";
+import { config } from '../config';
 
 interface SettingsProps {
   useTTS: boolean;
@@ -45,10 +45,7 @@ export const Settings: React.FC<SettingsProps> = ({
       {config.enabledLudicrousMode && (
         <>
           <div className="flex items-center mb-1">
-            <label
-              htmlFor="ludicrous-mode-toggle"
-              className="flex items-center cursor-pointer"
-            >
+            <label htmlFor="ludicrous-mode-toggle" className="flex items-center cursor-pointer">
               <div className="relative">
                 <input
                   type="checkbox"
@@ -57,36 +54,19 @@ export const Settings: React.FC<SettingsProps> = ({
                   checked={useLudicrousMode}
                   onChange={handleLudicrousModeToggle}
                 />
-                <div
-                  className={`block w-10 h-6 rounded-full ${
-                    useLudicrousMode ? "bg-green-500" : "bg-gray-300"
-                  }`}
-                ></div>
-                <div
-                  className={`absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition ${
-                    useLudicrousMode ? "transform translate-x-full" : ""
-                  }`}
-                ></div>
+                <div className={`block w-10 h-6 rounded-full ${useLudicrousMode ? 'bg-green-500' : 'bg-gray-300'}`}></div>
+                <div className={`absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition ${useLudicrousMode ? 'transform translate-x-full' : ''}`}></div>
               </div>
               <div className="ml-3 text-sm">Ludicrous Mode</div>
             </label>
           </div>
-          <div className="text-xs text-gray-500 mb-2">
-            (Groq Llama3 + Groq Whisper only)
-          </div>
+          <div className="text-xs text-gray-500 mb-2">(Groq Llama3 + Groq Whisper only)</div>
         </>
       )}
       {config.enableTextToSpeechUIToggle && (
         <div className="flex items-center mb-2">
-          <label
-            htmlFor="tts-toggle"
-            className="flex items-center cursor-pointer"
-          >
-            <div
-              className={`relative ${
-                useLudicrousMode ? "opacity-50 cursor-not-allowed" : ""
-              }`}
-            >
+          <label htmlFor="tts-toggle" className="flex items-center cursor-pointer">
+            <div className={`relative ${useLudicrousMode ? 'opacity-50 cursor-not-allowed' : ''}`}>
               <input
                 type="checkbox"
                 id="tts-toggle"
@@ -95,18 +75,8 @@ export const Settings: React.FC<SettingsProps> = ({
                 onChange={onTTSToggle}
                 disabled={useLudicrousMode}
               />
-              <div
-                className={`block w-10 h-6 rounded-full ${
-                  useTTS && !useLudicrousMode ? "bg-green-500" : "bg-gray-300"
-                }`}
-              ></div>
-              <div
-                className={`absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition ${
-                  useTTS && !useLudicrousMode
-                    ? "transform translate-x-full"
-                    : ""
-                }`}
-              ></div>
+              <div className={`block w-10 h-6 rounded-full ${useTTS && !useLudicrousMode ? 'bg-green-500' : 'bg-gray-300'}`}></div>
+              <div className={`absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition ${useTTS && !useLudicrousMode ? 'transform translate-x-full' : ''}`}></div>
             </div>
             <div className="ml-3 text-sm">Text-to-Speech</div>
           </label>
@@ -114,15 +84,8 @@ export const Settings: React.FC<SettingsProps> = ({
       )}
       {config.enableInternetResultsUIToggle && (
         <div className="flex items-center mb-2">
-          <label
-            htmlFor="internet-toggle"
-            className="flex items-center cursor-pointer"
-          >
-            <div
-              className={`relative ${
-                useLudicrousMode ? "opacity-50 cursor-not-allowed" : ""
-              }`}
-            >
+          <label htmlFor="internet-toggle" className="flex items-center cursor-pointer">
+            <div className={`relative ${useLudicrousMode ? 'opacity-50 cursor-not-allowed' : ''}`}>
               <input
                 type="checkbox"
                 id="internet-toggle"
@@ -131,20 +94,8 @@ export const Settings: React.FC<SettingsProps> = ({
                 onChange={onInternetToggle}
                 disabled={useLudicrousMode}
               />
-              <div
-                className={`block w-10 h-6 rounded-full ${
-                  useInternet && !useLudicrousMode
-                    ? "bg-green-500"
-                    : "bg-gray-300"
-                }`}
-              ></div>
-              <div
-                className={`absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition ${
-                  useInternet && !useLudicrousMode
-                    ? "transform translate-x-full"
-                    : ""
-                }`}
-              ></div>
+              <div className={`block w-10 h-6 rounded-full ${useInternet && !useLudicrousMode ? 'bg-green-500' : 'bg-gray-300'}`}></div>
+              <div className={`absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition ${useInternet && !useLudicrousMode ? 'transform translate-x-full' : ''}`}></div>
             </div>
             <div className="ml-3 text-sm">Use Internet Results</div>
           </label>
@@ -152,15 +103,8 @@ export const Settings: React.FC<SettingsProps> = ({
       )}
       {config.enableUsePhotUIToggle && (
         <div className="flex items-center mb-2">
-          <label
-            htmlFor="photos-toggle"
-            className="flex items-center cursor-pointer"
-          >
-            <div
-              className={`relative ${
-                useLudicrousMode ? "opacity-50 cursor-not-allowed" : ""
-              }`}
-            >
+          <label htmlFor="photos-toggle" className="flex items-center cursor-pointer">
+            <div className={`relative ${useLudicrousMode ? 'opacity-50 cursor-not-allowed' : ''}`}>
               <input
                 type="checkbox"
                 id="photos-toggle"
@@ -169,30 +113,15 @@ export const Settings: React.FC<SettingsProps> = ({
                 onChange={onPhotosToggle}
                 disabled={useLudicrousMode}
               />
-              <div
-                className={`block w-10 h-6 rounded-full ${
-                  usePhotos && !useLudicrousMode
-                    ? "bg-green-500"
-                    : "bg-gray-300"
-                }`}
-              ></div>
-              <div
-                className={`absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition ${
-                  usePhotos && !useLudicrousMode
-                    ? "transform translate-x-full"
-                    : ""
-                }`}
-              ></div>
+              <div className={`block w-10 h-6 rounded-full ${usePhotos && !useLudicrousMode ? 'bg-green-500' : 'bg-gray-300'}`}></div>
+              <div className={`absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition ${usePhotos && !useLudicrousMode ? 'transform translate-x-full' : ''}`}></div>
             </div>
             <div className="ml-3 text-sm">Use Photos</div>
           </label>
         </div>
       )}
       <div className="flex items-center">
-        <label
-          htmlFor="rabbit-mode-toggle"
-          className="flex items-center cursor-pointer"
-        >
+        <label htmlFor="rabbit-mode-toggle" className="flex items-center cursor-pointer">
           <div className="relative">
             <input
               type="checkbox"
@@ -201,18 +130,12 @@ export const Settings: React.FC<SettingsProps> = ({
               checked={useRabbitMode}
               onChange={onRabbitModeToggle}
             />
-            <div
-              className={`block w-10 h-6 rounded-full ${
-                useRabbitMode ? "bg-green-500" : "bg-gray-300"
-              }`}
-            ></div>
-            <div
-              className={`absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition ${
-                useRabbitMode ? "transform translate-x-full" : ""
-              }`}
-            ></div>
+            <div className={`block w-10 h-6 rounded-full ${useRabbitMode ? 'bg-green-500' : 'bg-gray-300'}`}></div>
+            <div className={`absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition ${useRabbitMode ? 'transform translate-x-full' : ''}`}></div>
           </div>
-          <div className="ml-3 text-sm flex items-center">Rabbit Mode</div>
+          <div className="ml-3 text-sm flex items-center">
+            Rabbit Mode
+          </div>
         </label>
       </div>
     </div>
