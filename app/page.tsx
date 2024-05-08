@@ -1,9 +1,9 @@
-"use client"
-import InputComponent from '@/components/InputComponent'
-import { useActions, readStreamableValue } from 'ai/rsc';
-import React, { useState } from 'react'
-import { AI } from './action';
-import { UIComponent, Message } from '@/lib/types';
+"use client";
+import InputComponent from "@/components/InputComponent";
+import { useActions, readStreamableValue } from "ai/rsc";
+import React, { useState } from "react";
+import { AI } from "./action";
+import { UIComponent, Message } from "@/lib/types";
 
 const Main = () => {
   const { action } = useActions<typeof AI>();
@@ -12,11 +12,20 @@ const Main = () => {
   const [useInternet, setUseInternet] = useState(false);
   const [usePhotos, setUsePhotos] = useState(false);
   const [useRabbitMode, setuseRabbitMode] = useState(false);
-  const [useSpotify, setUseSpotify] = useState('');
-  const [currentTranscription, setCurrentTranscription] = useState<{ transcription: string, responseTime: number } | null>(null);
-  const [totalResponseTime, setTotalResponseTime] = useState<number | null>(null);
-  const [currentUIComponent, setCurrentUIComponent] = useState<UIComponent | null>(null);
-  const [message, setMessage] = useState<{ message: string; responseTime: number } | null>(null);
+  const [useSpotify, setUseSpotify] = useState("");
+  const [currentTranscription, setCurrentTranscription] = useState<{
+    transcription: string;
+    responseTime: number;
+  } | null>(null);
+  const [totalResponseTime, setTotalResponseTime] = useState<number | null>(
+    null,
+  );
+  const [currentUIComponent, setCurrentUIComponent] =
+    useState<UIComponent | null>(null);
+  const [message, setMessage] = useState<{
+    message: string;
+    responseTime: number;
+  } | null>(null);
   const [isMobile, setIsMobile] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
 
@@ -31,30 +40,49 @@ const Main = () => {
     setMessage(null);
 
     for await (const message of readStreamableValue<Message>(streamableValue)) {
-      if (message && message.rateLimitReached && typeof message.rateLimitReached === 'string') {
+      if (
+        message &&
+        message.rateLimitReached &&
+        typeof message.rateLimitReached === "string"
+      ) {
         setMessage({ message: message.rateLimitReached, responseTime: 0 });
       }
-      if (message && message.time && typeof message.time === 'string') {
-        setCurrentUIComponent({ component: 'time', data: message.time });
+      if (message && message.time && typeof message.time === "string") {
+        setCurrentUIComponent({ component: "time", data: message.time });
       }
-      if (message && message.transcription && typeof message.transcription === 'string') {
+      if (
+        message &&
+        message.transcription &&
+        typeof message.transcription === "string"
+      ) {
         transcriptionResponseTime = (Date.now() - startTime) / 1000;
         transcriptionCompletionTime = Date.now();
-        setCurrentTranscription({ transcription: message.transcription, responseTime: transcriptionResponseTime });
+        setCurrentTranscription({
+          transcription: message.transcription,
+          responseTime: transcriptionResponseTime,
+        });
       }
-      if (message && message.weather && typeof message.weather === 'string') {
-        setCurrentUIComponent({ component: 'weather', data: JSON.parse(message.weather) });
+      if (message && message.weather && typeof message.weather === "string") {
+        setCurrentUIComponent({
+          component: "weather",
+          data: JSON.parse(message.weather),
+        });
       }
-      if (message && message.result && typeof message.result === 'string') {
-        messageResponseTime = (Date.now() - (transcriptionCompletionTime || startTime)) / 1000;
-        setMessage({ message: message.result, responseTime: messageResponseTime });
+      if (message && message.result && typeof message.result === "string") {
+        messageResponseTime =
+          (Date.now() - (transcriptionCompletionTime || startTime)) / 1000;
+        setMessage({
+          message: message.result,
+          responseTime: messageResponseTime,
+        });
       }
-      if (message && message.audio && typeof message.audio === 'string') {
-        audioResponseTime = (Date.now() - (transcriptionCompletionTime || startTime)) / 1000;
+      if (message && message.audio && typeof message.audio === "string") {
+        audioResponseTime =
+          (Date.now() - (transcriptionCompletionTime || startTime)) / 1000;
         const audio = new Audio(message.audio);
         audio.play();
       }
-      if (message && message.spotify && typeof message.spotify === 'string') {
+      if (message && message.spotify && typeof message.spotify === "string") {
         setUseSpotify(message.spotify);
       }
     }
@@ -83,7 +111,7 @@ const Main = () => {
         useRabbitMode={true}
       />
     </div>
-  )
-}
+  );
+};
 
-export default Main
+export default Main;
