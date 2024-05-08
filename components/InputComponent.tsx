@@ -85,7 +85,7 @@ const InputComponent: React.FC<InputComponentProps> = ({
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
-          className="mb-5 font-serif tracking-wider font-semi-bold text-2xl"
+          className="mb-5 tracking-wider font-semi-bold text-2xl"
         >
           Listening...
         </motion.div>
