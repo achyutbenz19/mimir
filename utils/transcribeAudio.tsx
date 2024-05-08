@@ -1,7 +1,7 @@
 import { toFile } from 'openai';
 import Groq from 'groq-sdk';
 import OpenAI from 'openai';
-import { config } from '../config';
+import { config } from "@/app/config";
 import { traceable } from "langsmith/traceable";
 const groq = new Groq();
 const openai = new OpenAI();

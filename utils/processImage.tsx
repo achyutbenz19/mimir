@@ -1,6 +1,6 @@
 import { HumanMessage } from "@langchain/core/messages";
 import { ChatOpenAI } from "@langchain/openai";
-import { config } from '../config';
+import { config } from "@/app/config";
 import { traceable } from "langsmith/traceable";
 import * as fal from "@fal-ai/serverless-client";
 

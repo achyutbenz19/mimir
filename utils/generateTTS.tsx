@@ -1,5 +1,5 @@
 import OpenAI from 'openai';
-import { config } from '../config';
+import { config } from "@/app/config";
 import { traceable } from "langsmith/traceable";
 
 const openai = new OpenAI();

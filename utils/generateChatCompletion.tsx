@@ -2,7 +2,7 @@ import { HumanMessage } from "@langchain/core/messages";
 import { ChatOpenAI } from "@langchain/openai";
 import { ChatGroq } from "@langchain/groq";
 import Groq from 'groq-sdk';
-import { config } from '../config';
+import { config } from "@/app/config";
 import { traceable } from "langsmith/traceable";
 
 const groq = new Groq();
