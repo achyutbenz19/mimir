@@ -70,7 +70,7 @@ export const chatCompletionWithTools = async (query: string) => {
   const res = await tool_calls.invoke([
     [
       "system",
-      "You are a helpful assistant and only responds in one sentence. Use the tools included only if they are relevant to the query. .",
+      "You are a helpful assistant and only responds in 1-2 sentences. Max number of words is 30. Use the tools included only if they are relevant to the query. .",
     ],
     ["human", query],
   ]);
