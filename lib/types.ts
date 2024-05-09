@@ -49,3 +49,12 @@ export interface SettingsProps {
   setInternet: (useInternet: boolean) => void;
   setPhotos: (usePhotos: boolean) => void;
 }
+
+export interface WeatherDataItem {
+  time: string;
+  temperature: number;
+}
+
+export interface WeatherDataProps {
+  data: WeatherDataItem[];
+}

@@ -13,7 +13,9 @@ const GeneratedUI = ({ currentUIComponent, useSpotify }: GeneratedUIProps) => {
         </div>
       )}
       {currentUIComponent && currentUIComponent.component === "weather" && (
-        <WeatherData data={currentUIComponent.data} />
+        <div className="max-w-xl">
+          <WeatherData data={currentUIComponent.data} />
+        </div>
       )}
       {currentUIComponent && currentUIComponent.component === "time" && (
         <ClockComponent />
