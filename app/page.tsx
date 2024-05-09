@@ -4,7 +4,6 @@ import { useActions, readStreamableValue } from "ai/rsc";
 import React, { useState } from "react";
 import { AI } from "./action";
 import { UIComponent, Message } from "@/lib/types";
-import GeneratedUI from "@/components/GeneratedUI";
 import Generation from "@/components/Generations";
 
 const Main = () => {

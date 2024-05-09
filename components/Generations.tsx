@@ -14,12 +14,7 @@ const Generation = ({
       <div className="flex mt-20 justify-center max-h-[40%] overflow-y-auto text-3xl items-center w-full max-w-3xl text-center">
         {message && message.message && <StreamText words={message.message} />}
       </div>
-      <GeneratedUI
-        message={message!}
-        currentUIComponent={currentUIComponent!}
-        useSpotify={useSpotify}
-        useRabbitMode={useRabbitMode}
-      />
+      <GeneratedUI useSpotify={useSpotify} useRabbitMode={useRabbitMode} />
       <div className="flex items-center max-h-[40%] justify-center overflow-y-auto max-w-3xl text-center w-full">
         {transcription}
       </div>

@@ -5,7 +5,6 @@ import { useDropzone, DropzoneOptions } from "react-dropzone";
 import { Button } from "./ui/button";
 import { MicIcon } from "lucide-react";
 import { motion } from "framer-motion";
-import { cn } from "@/lib/utils";
 
 const InputComponent: React.FC<InputComponentProps> = ({
   onSubmit,
@@ -13,7 +12,6 @@ const InputComponent: React.FC<InputComponentProps> = ({
   useInternet,
   usePhotos,
   useLudicrousMode,
-  useRabbitMode,
 }) => {
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
   const [recording, setRecording] = useState(false);

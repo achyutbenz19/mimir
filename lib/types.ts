@@ -24,11 +24,11 @@ export interface InputComponentProps {
 
 export interface GeneratedUIProps {
   transcription?: string;
-  message: {
+  message?: {
     message: string;
     responseTime: number;
   };
-  currentUIComponent: UIComponent;
+  currentUIComponent?: UIComponent;
   useSpotify: string;
   useRabbitMode: boolean;
 }
