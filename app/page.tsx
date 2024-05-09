@@ -137,6 +137,7 @@ const Main = () => {
         onInternetToggle={() => setUseInternet(!useInternet)}
         onPhotosToggle={() => setUsePhotos(!usePhotos)}
         onRabbitModeToggle={() => setuseRabbitMode(!useRabbitMode)}
+        setBasicMode={setUseBasicMode}
         setTTS={setUseTTS}
         setInternet={setUseInternet}
         setPhotos={setUsePhotos}

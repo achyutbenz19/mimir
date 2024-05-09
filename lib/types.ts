@@ -48,6 +48,7 @@ export interface SettingsProps {
   onPhotosToggle: () => void;
   onBasicModeToggle: () => void;
   onRabbitModeToggle: () => void;
+  setBasicMode: (useBasicMode: boolean) => void;
   setTTS: (useTTS: boolean) => void;
   setInternet: (useInternet: boolean) => void;
   setPhotos: (usePhotos: boolean) => void;

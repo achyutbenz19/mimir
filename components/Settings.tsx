@@ -20,6 +20,7 @@ export const Settings: React.FC<SettingsProps> = ({
   onInternetToggle,
   onPhotosToggle,
   onBasicModeToggle,
+  setBasicMode,
   setTTS,
   setInternet,
   setPhotos,
@@ -29,12 +30,15 @@ export const Settings: React.FC<SettingsProps> = ({
     switch (type) {
       case "tts":
         onTTSToggle();
+        setBasicMode(false);
         break;
       case "internet":
         onInternetToggle();
+        setBasicMode(false);
         break;
       case "photos":
         onPhotosToggle();
+        setBasicMode(false);
         break;
       case "basic":
         onBasicModeToggle();
