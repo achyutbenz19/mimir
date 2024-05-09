@@ -15,19 +15,27 @@ const Main = () => {
   const [usePhotos, setUsePhotos] = useState(false);
   const [useRabbitMode, setuseRabbitMode] = useState(false);
   const [useSpotify, setUseSpotify] = useState("");
-  const [currentTranscription, setCurrentTranscription] = useState<{
-    transcription: string;
-    responseTime: number;
-  } | null>(null);
+  const [currentTranscription, setCurrentTranscription] = useState<
+    | {
+        transcription: string;
+        responseTime: number;
+      }
+    | null
+    | undefined
+  >(undefined);
   const [totalResponseTime, setTotalResponseTime] = useState<number | null>(
     null,
   );
   const [currentUIComponent, setCurrentUIComponent] =
     useState<UIComponent | null>(null);
-  const [message, setMessage] = useState<{
-    message: string;
-    responseTime: number;
-  } | null>(null);
+  const [message, setMessage] = useState<
+    | {
+        message: string;
+        responseTime: number;
+      }
+    | null
+    | undefined
+  >(undefined);
   const [isMobile, setIsMobile] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
 
