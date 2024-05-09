@@ -1,10 +1,11 @@
 "use client";
-import { InputComponentProps } from "@/lib/types";
 import { useState, useRef } from "react";
 import { useDropzone, DropzoneOptions } from "react-dropzone";
 import { Button } from "./ui/button";
 import { MicIcon } from "lucide-react";
 import { motion } from "framer-motion";
+import { InputComponentProps } from "@/lib/types";
+import { cn } from "@/lib/utils";
 
 const InputComponent: React.FC<InputComponentProps> = ({
   onSubmit,
@@ -34,7 +35,7 @@ const InputComponent: React.FC<InputComponentProps> = ({
     setSelectedImage(null);
   };
 
-  const handleRecording = () => {
+  const toggleRecording = () => {
     if (recording) {
       stopRecording();
     } else {
@@ -95,11 +96,11 @@ const InputComponent: React.FC<InputComponentProps> = ({
       )}
       <div className="flex items-center justify-center w-full max-w-md">
         <Button
-          onMouseDown={handleRecording}
-          onMouseUp={handleRecording}
-          onTouchStart={handleRecording}
-          onTouchEnd={handleRecording}
-          className="flex items-center justify-center w-full h-20 rounded-full"
+          onClick={toggleRecording}
+          className={cn(
+            "flex items-center justify-center w-full h-20 rounded-full",
+            recording && "bg-accent",
+          )}
           variant="outline"
         >
           <MicIcon className="w-8 h-8" />
