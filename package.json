@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@clerk/nextjs": "^5.0.7",
     "@fal-ai/serverless-client": "^0.9.3",
     "@langchain/groq": "^0.0.9",
     "@langchain/openai": "^0.0.28",
