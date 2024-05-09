@@ -57,36 +57,36 @@ export const Settings: React.FC<SettingsProps> = ({
         </DropdownMenuTrigger>
         <DropdownMenuContent alignOffset={10} className="ml-4 p-2 font-sans">
           <DropdownMenuItem
-            className="flex space-x-3 items-center mb-2 mt-1"
+            className="flex space-x-3 items-center"
             onClick={(e) => handleEvent(e, "basic")}
           >
             <Switch
               checked={useBasicMode}
               onCheckedChange={onBasicModeToggle}
             />
-            <span className="text-lg">Basic</span>
+            <span>Basic</span>
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem
-            className="flex space-x-3 items-center mb-2"
+            className="flex space-x-3 items-center"
             onClick={(e) => handleEvent(e, "tts")}
           >
             <Switch checked={useTTS} onCheckedChange={onTTSToggle} />
-            <span className="text-lg">TTS</span>
+            <span>TTS</span>
           </DropdownMenuItem>
           <DropdownMenuItem
-            className="flex space-x-3 items-center mb-2"
+            className="flex space-x-3 items-center"
             onClick={(e) => handleEvent(e, "internet")}
           >
             <Switch checked={useInternet} onCheckedChange={onInternetToggle} />
-            <span className="text-lg">Internet</span>
+            <span>Internet</span>
           </DropdownMenuItem>
           <DropdownMenuItem
-            className="flex space-x-3 items-center mb-2"
+            className="flex space-x-3 items-center"
             onClick={(e) => handleEvent(e, "photos")}
           >
             <Switch checked={usePhotos} onCheckedChange={onPhotosToggle} />
-            <span className="text-lg">Photos</span>
+            <span>Photos</span>
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
