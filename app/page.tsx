@@ -4,6 +4,7 @@ import { useActions, readStreamableValue } from "ai/rsc";
 import React, { useState } from "react";
 import { AI } from "./action";
 import { UIComponent, Message } from "@/lib/types";
+import GeneratedUI from "@/components/GeneratedUI";
 
 const Main = () => {
   const { action } = useActions<typeof AI>();
@@ -100,8 +101,13 @@ const Main = () => {
     setTotalResponseTime(totalResponseTime);
   };
 
+  console.log(useSpotify)
+
   return (
     <div>
+      {currentTranscription?.transcription}
+      {message?.message}
+      {totalResponseTime}
       <InputComponent
         onSubmit={handleSubmit}
         useTTS={true}
@@ -110,6 +116,7 @@ const Main = () => {
         useLudicrousMode={true}
         useRabbitMode={true}
       />
+      <GeneratedUI message={message!} currentUIComponent={currentUIComponent!} useSpotify={useSpotify} useRabbitMode={useRabbitMode} />
     </div>
   );
 };

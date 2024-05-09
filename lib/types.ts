@@ -21,3 +21,13 @@ export interface InputComponentProps {
   useLudicrousMode: boolean;
   useRabbitMode: boolean;
 }
+
+export interface GeneratedUIProps {
+  message: {
+    message: string,
+    responseTime: number
+  };
+  currentUIComponent: UIComponent
+  useSpotify: string,
+  useRabbitMode: boolean
+}

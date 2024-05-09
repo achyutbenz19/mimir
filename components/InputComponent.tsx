@@ -36,11 +36,11 @@ const InputComponent: React.FC<InputComponentProps> = ({
   };
 
   const handleRecording = () => {
-    // if (recording) {
-    //   stopRecording();
-    // } else {
-    //   startRecording();
-    // }
+    if (recording) {
+      stopRecording();
+    } else {
+      startRecording();
+    }
     setRecording(!recording);
   };
 
@@ -79,7 +79,7 @@ const InputComponent: React.FC<InputComponentProps> = ({
   };
 
   return (
-    <div className="flex w-full flex-col items-center justify-center absolute bottom-0 mb-10">
+    <div className="flex w-full flex-col items-center mb-10 justify-center absolute bottom-0">
       {recording && (
         <motion.div
           initial={{ opacity: 0, y: 15 }}
