@@ -6,7 +6,7 @@ import { AI } from "./action";
 
 export const metadata: Metadata = {
   title: "Mimir",
-  description: "Ask anything",
+  description: "ask anything.",
 };
 
 export default function RootLayout({
