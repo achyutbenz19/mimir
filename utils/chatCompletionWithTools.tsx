@@ -1,9 +1,7 @@
 import { ChatOpenAI } from "@langchain/openai";
-import { ChatGroq } from "@langchain/groq";
 import { getCurrentWeather } from "./tools/getWeather";
 import { searchSong } from "./tools/getSpotify";
 import { getTime } from "./tools/getTime";
-import { config } from "@/app/config";
 
 const tool_calls = new ChatOpenAI({
   model: "gpt-3.5-turbo",
@@ -77,6 +75,7 @@ export const chatCompletionWithTools = async (query: string) => {
     ["human", query],
   ]);
   const toolCalls = res.additional_kwargs.tool_calls;
+
   if (toolCalls && toolCalls.length > 0) {
     if (toolCalls[0].function.name === "getCurrentWeather") {
       const {
