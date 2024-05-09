@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import { AI } from "./action";
 import { UIComponent, Message } from "@/lib/types";
 import Generation from "@/components/Generations";
+import { Settings } from "@/components/Settings";
 
 const Main = () => {
   const { action } = useActions<typeof AI>();
@@ -29,6 +30,26 @@ const Main = () => {
   } | null>(null);
   const [isMobile, setIsMobile] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
+
+  const handleSettingsClick = () => {
+    setShowSettings(!showSettings);
+  };
+
+  const handleTTSToggle = () => {
+    setUseTTS(!useTTS);
+  };
+
+  const handleInternetToggle = () => {
+    setUseInternet(!useInternet);
+  };
+
+  const handleLudicrousModeToggle = () => {
+    setUseLudicrousMode(!useLudicrousMode);
+  };
+
+  const handleRabbitModeToggle = () => {
+    setuseRabbitMode(!useRabbitMode);
+  };
 
   const handleSubmit = async (formData: FormData) => {
     const startTime = Date.now();
@@ -117,6 +138,21 @@ const Main = () => {
         usePhotos={true}
         useLudicrousMode={true}
         useRabbitMode={true}
+      />
+      <Settings
+        useLudicrousMode={useLudicrousMode}
+        useTTS={useTTS}
+        useInternet={useInternet}
+        usePhotos={usePhotos}
+        useRabbitMode={useRabbitMode}
+        onLudicrousModeToggle={handleLudicrousModeToggle}
+        onTTSToggle={handleTTSToggle}
+        onInternetToggle={handleInternetToggle}
+        onPhotosToggle={() => setUsePhotos(!usePhotos)}
+        onRabbitModeToggle={handleRabbitModeToggle}
+        setTTS={setUseTTS}
+        setInternet={setUseInternet}
+        setPhotos={setUsePhotos}
       />
     </div>
   );

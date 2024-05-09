@@ -32,3 +32,19 @@ export interface GeneratedUIProps {
   useSpotify: string;
   useRabbitMode: boolean;
 }
+
+export interface SettingsProps {
+  useTTS: boolean;
+  useInternet: boolean;
+  usePhotos: boolean;
+  useLudicrousMode: boolean;
+  useRabbitMode: boolean;
+  onTTSToggle: () => void;
+  onInternetToggle: () => void;
+  onPhotosToggle: () => void;
+  onLudicrousModeToggle: () => void;
+  onRabbitModeToggle: () => void;
+  setTTS: (useTTS: boolean) => void;
+  setInternet: (useInternet: boolean) => void;
+  setPhotos: (usePhotos: boolean) => void;
+}
