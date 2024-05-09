@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import { AI } from "./action";
 import { UIComponent, Message } from "@/lib/types";
 import GeneratedUI from "@/components/GeneratedUI";
+import Generation from "@/components/Generations";
 
 const Main = () => {
   const { action } = useActions<typeof AI>();
@@ -102,10 +103,14 @@ const Main = () => {
   };
 
   return (
-    <div>
-      {currentTranscription?.transcription}
-      {message?.message}
-      {totalResponseTime}
+    <div className="flex-col flex h-screen">
+      <Generation
+        transcription={currentTranscription?.transcription!}
+        message={message!}
+        currentUIComponent={currentUIComponent!}
+        useSpotify={useSpotify}
+        useRabbitMode={useRabbitMode}
+      />
       <InputComponent
         onSubmit={handleSubmit}
         useTTS={true}
@@ -113,12 +118,6 @@ const Main = () => {
         usePhotos={true}
         useLudicrousMode={true}
         useRabbitMode={true}
-      />
-      <GeneratedUI
-        message={message!}
-        currentUIComponent={currentUIComponent!}
-        useSpotify={useSpotify}
-        useRabbitMode={useRabbitMode}
       />
     </div>
   );

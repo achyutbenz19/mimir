@@ -23,6 +23,7 @@ export interface InputComponentProps {
 }
 
 export interface GeneratedUIProps {
+  transcription?: string;
   message: {
     message: string;
     responseTime: number;

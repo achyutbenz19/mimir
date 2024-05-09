@@ -1,12 +1,4 @@
-export const SpotifyTrack = ({
-  trackId,
-  width = 300,
-  height = 80,
-}: {
-  trackId: string;
-  width?: number;
-  height?: number;
-}) => {
+export const SpotifyTrack = ({ trackId }: { trackId: string }) => {
   if (!trackId) {
     return null;
   }
@@ -14,9 +6,8 @@ export const SpotifyTrack = ({
   return (
     <iframe
       src={`https://open.spotify.com/embed/track/${trackId}`}
-      width={width}
-      height={height}
-      frameBorder="0"
+      width={"100%"}
+      height={80}
       allow="encrypted-media"
     />
   );

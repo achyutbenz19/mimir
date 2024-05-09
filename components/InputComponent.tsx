@@ -5,6 +5,7 @@ import { useDropzone, DropzoneOptions } from "react-dropzone";
 import { Button } from "./ui/button";
 import { MicIcon } from "lucide-react";
 import { motion } from "framer-motion";
+import { cn } from "@/lib/utils";
 
 const InputComponent: React.FC<InputComponentProps> = ({
   onSubmit,
@@ -79,13 +80,13 @@ const InputComponent: React.FC<InputComponentProps> = ({
   };
 
   return (
-    <div className="flex w-full flex-col items-center mb-10 justify-center absolute bottom-0">
+    <div className={"flex w-full flex-col items-center my-10 justify-center"}>
       {recording && (
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
-          className="mb-5 tracking-wider font-semi-bold text-2xl"
+          className="mb-5 tracking-wider font-semi-bold text-xl"
         >
           Listening...
         </motion.div>
