@@ -78,7 +78,11 @@ const InputComponent: React.FC<InputComponentProps> = ({
   };
 
   return (
-    <div className={"flex w-full flex-col items-center my-10 justify-center"}>
+    <div
+      className={
+        "flex z-[20] w-full flex-col items-center my-10 justify-center"
+      }
+    >
       {recording && (
         <motion.div
           initial={{ opacity: 0, y: 15 }}
