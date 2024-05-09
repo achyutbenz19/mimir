@@ -29,8 +29,9 @@ export interface GeneratedUIProps {
     responseTime: number;
   };
   currentUIComponent?: UIComponent;
-  useSpotify: string;
-  useRabbitMode: boolean;
+  useSpotify?: string;
+  useRabbitMode?: boolean;
+  totalResponseTime?: number;
 }
 
 export interface SettingsProps {

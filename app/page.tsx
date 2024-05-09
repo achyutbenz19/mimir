@@ -36,28 +36,6 @@ const Main = () => {
     | null
     | undefined
   >(undefined);
-  const [isMobile, setIsMobile] = useState(false);
-  const [showSettings, setShowSettings] = useState(false);
-
-  const handleSettingsClick = () => {
-    setShowSettings(!showSettings);
-  };
-
-  const handleTTSToggle = () => {
-    setUseTTS(!useTTS);
-  };
-
-  const handleInternetToggle = () => {
-    setUseInternet(!useInternet);
-  };
-
-  const handleLudicrousModeToggle = () => {
-    setUseLudicrousMode(!useLudicrousMode);
-  };
-
-  const handleRabbitModeToggle = () => {
-    setuseRabbitMode(!useRabbitMode);
-  };
 
   const handleSubmit = async (formData: FormData) => {
     const startTime = Date.now();
@@ -138,14 +116,15 @@ const Main = () => {
         currentUIComponent={currentUIComponent!}
         useSpotify={useSpotify}
         useRabbitMode={useRabbitMode}
+        totalResponseTime={totalResponseTime!}
       />
       <InputComponent
         onSubmit={handleSubmit}
-        useTTS={true}
-        useInternet={true}
-        usePhotos={true}
-        useLudicrousMode={true}
-        useRabbitMode={true}
+        useTTS={useTTS}
+        useInternet={useInternet}
+        usePhotos={usePhotos}
+        useLudicrousMode={useLudicrousMode}
+        useRabbitMode={useRabbitMode}
       />
       <Settings
         useLudicrousMode={useLudicrousMode}
@@ -153,11 +132,11 @@ const Main = () => {
         useInternet={useInternet}
         usePhotos={usePhotos}
         useRabbitMode={useRabbitMode}
-        onLudicrousModeToggle={handleLudicrousModeToggle}
-        onTTSToggle={handleTTSToggle}
-        onInternetToggle={handleInternetToggle}
+        onLudicrousModeToggle={() => setUseLudicrousMode(!useLudicrousMode)}
+        onTTSToggle={() => !useTTS}
+        onInternetToggle={() => setUseInternet(!useInternet)}
         onPhotosToggle={() => setUsePhotos(!usePhotos)}
-        onRabbitModeToggle={handleRabbitModeToggle}
+        onRabbitModeToggle={() => setuseRabbitMode(!useRabbitMode)}
         setTTS={setUseTTS}
         setInternet={setUseInternet}
         setPhotos={setUsePhotos}
