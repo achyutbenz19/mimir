@@ -9,7 +9,7 @@ import { Settings } from "@/components/Settings";
 
 const Main = () => {
   const { action } = useActions<typeof AI>();
-  const [useLudicrousMode, setUseLudicrousMode] = useState(true);
+  const [useBasicMode, setUseBasicMode] = useState(true);
   const [useTTS, setUseTTS] = useState(false);
   const [useInternet, setUseInternet] = useState(false);
   const [usePhotos, setUsePhotos] = useState(false);
@@ -123,17 +123,17 @@ const Main = () => {
         useTTS={useTTS}
         useInternet={useInternet}
         usePhotos={usePhotos}
-        useLudicrousMode={useLudicrousMode}
+        useBasicMode={useBasicMode}
         useRabbitMode={useRabbitMode}
       />
       <Settings
-        useLudicrousMode={useLudicrousMode}
+        useBasicMode={useBasicMode}
         useTTS={useTTS}
         useInternet={useInternet}
         usePhotos={usePhotos}
         useRabbitMode={useRabbitMode}
-        onLudicrousModeToggle={() => setUseLudicrousMode(!useLudicrousMode)}
-        onTTSToggle={() => !useTTS}
+        onBasicModeToggle={() => setUseBasicMode(!useBasicMode)}
+        onTTSToggle={() => setUseTTS(!useTTS)}
         onInternetToggle={() => setUseInternet(!useInternet)}
         onPhotosToggle={() => setUsePhotos(!usePhotos)}
         onRabbitModeToggle={() => setuseRabbitMode(!useRabbitMode)}

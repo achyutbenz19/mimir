@@ -21,7 +21,7 @@ export interface InputComponentProps {
   useTTS: boolean;
   useInternet: boolean;
   usePhotos: boolean;
-  useLudicrousMode: boolean;
+  useBasicMode: boolean;
   useRabbitMode: boolean;
 }
 
@@ -41,12 +41,12 @@ export interface SettingsProps {
   useTTS: boolean;
   useInternet: boolean;
   usePhotos: boolean;
-  useLudicrousMode: boolean;
+  useBasicMode: boolean;
   useRabbitMode: boolean;
   onTTSToggle: () => void;
   onInternetToggle: () => void;
   onPhotosToggle: () => void;
-  onLudicrousModeToggle: () => void;
+  onBasicModeToggle: () => void;
   onRabbitModeToggle: () => void;
   setTTS: (useTTS: boolean) => void;
   setInternet: (useInternet: boolean) => void;

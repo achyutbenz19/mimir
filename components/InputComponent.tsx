@@ -11,7 +11,7 @@ const InputComponent: React.FC<InputComponentProps> = ({
   useTTS,
   useInternet,
   usePhotos,
-  useLudicrousMode,
+  useBasicMode,
 }) => {
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
   const [recording, setRecording] = useState(false);
@@ -67,7 +67,7 @@ const InputComponent: React.FC<InputComponentProps> = ({
         formData.append("useTTS", String(useTTS));
         formData.append("useInternet", String(useInternet));
         formData.append("usePhotos", String(usePhotos));
-        formData.append("useLudicrousMode", String(useLudicrousMode));
+        formData.append("useBasicMode", String(useBasicMode));
         if (selectedImage) {
           formData.append("image", selectedImage, selectedImage.name);
         }

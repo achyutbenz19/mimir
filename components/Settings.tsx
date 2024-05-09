@@ -2,33 +2,48 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { SettingsIcon } from "lucide-react";
 import { Button } from "./ui/button";
 import { SettingsProps } from "@/lib/types";
+import { MouseEvent } from "react";
+import { Switch } from "./ui/switch";
 
 export const Settings: React.FC<SettingsProps> = ({
   useTTS,
   useInternet,
   usePhotos,
-  useLudicrousMode,
-  useRabbitMode,
+  useBasicMode,
   onTTSToggle,
   onInternetToggle,
   onPhotosToggle,
-  onLudicrousModeToggle,
-  onRabbitModeToggle,
+  onBasicModeToggle,
   setTTS,
   setInternet,
   setPhotos,
 }) => {
-  const handleLudicrousModeToggle = () => {
-    onLudicrousModeToggle();
-    if (!useLudicrousMode) {
-      setTTS(false);
-      setInternet(false);
-      setPhotos(false);
+  const handleEvent = (e: MouseEvent<HTMLDivElement>, type: string) => {
+    e.preventDefault();
+    switch (type) {
+      case "tts":
+        onTTSToggle();
+        break;
+      case "internet":
+        onInternetToggle();
+        break;
+      case "photos":
+        onPhotosToggle();
+        break;
+      case "basic":
+        onBasicModeToggle();
+        if (!useBasicMode) {
+          setTTS(false);
+          setInternet(false);
+          setPhotos(false);
+        }
+        break;
     }
   };
 
@@ -41,148 +56,37 @@ export const Settings: React.FC<SettingsProps> = ({
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent alignOffset={10} className="ml-4 p-2 font-sans">
-          <DropdownMenuItem>
-            <div className="flex items-center mb-2 mt-1">
-              <label
-                htmlFor="ludicrous-mode-toggle"
-                className="flex items-center cursor-pointer"
-              >
-                <div className="relative">
-                  <input
-                    type="checkbox"
-                    id="ludicrous-mode-toggle"
-                    className="sr-only"
-                    checked={useLudicrousMode}
-                    onChange={handleLudicrousModeToggle}
-                  />
-                  <div
-                    className={`block w-10 h-6 rounded-full ${
-                      useLudicrousMode ? "bg-green-500" : "bg-gray-300"
-                    }`}
-                  ></div>
-                  <div
-                    className={`absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition ${
-                      useLudicrousMode ? "transform translate-x-full" : ""
-                    }`}
-                  ></div>
-                </div>
-                <div className="ml-3 text-sm">Ludicrous Mode</div>
-              </label>
-            </div>
+          <DropdownMenuItem
+            className="flex space-x-3 items-center mb-2 mt-1"
+            onClick={(e) => handleEvent(e, "basic")}
+          >
+            <Switch
+              checked={useBasicMode}
+              onCheckedChange={onBasicModeToggle}
+            />
+            <span className="text-lg">Basic</span>
           </DropdownMenuItem>
-          <DropdownMenuItem>
-            <div className="flex items-center mb-2">
-              <label
-                htmlFor="tts-toggle"
-                className="flex items-center cursor-pointer"
-              >
-                <div
-                  className={`relative ${
-                    useLudicrousMode ? "opacity-50 cursor-not-allowed" : ""
-                  }`}
-                >
-                  <input
-                    type="checkbox"
-                    id="tts-toggle"
-                    className="sr-only"
-                    checked={useTTS && !useLudicrousMode}
-                    onChange={onTTSToggle}
-                    disabled={useLudicrousMode}
-                  />
-                  <div
-                    className={`block w-10 h-6 rounded-full ${
-                      useTTS && !useLudicrousMode
-                        ? "bg-green-500"
-                        : "bg-gray-300"
-                    }`}
-                  ></div>
-                  <div
-                    className={`absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition ${
-                      useTTS && !useLudicrousMode
-                        ? "transform translate-x-full"
-                        : ""
-                    }`}
-                  ></div>
-                </div>
-                <div className="ml-3 text-sm">Text-to-Speech</div>
-              </label>
-            </div>
+          <DropdownMenuSeparator />
+          <DropdownMenuItem
+            className="flex space-x-3 items-center mb-2"
+            onClick={(e) => handleEvent(e, "tts")}
+          >
+            <Switch checked={useTTS} onCheckedChange={onTTSToggle} />
+            <span className="text-lg">TTS</span>
           </DropdownMenuItem>
-          <DropdownMenuItem>
-            <div className="flex items-center mb-2">
-              <label
-                htmlFor="internet-toggle"
-                className="flex items-center cursor-pointer"
-              >
-                <div
-                  className={`relative ${
-                    useLudicrousMode ? "opacity-50 cursor-not-allowed" : ""
-                  }`}
-                >
-                  <input
-                    type="checkbox"
-                    id="internet-toggle"
-                    className="sr-only"
-                    checked={useInternet && !useLudicrousMode}
-                    onChange={onInternetToggle}
-                    disabled={useLudicrousMode}
-                  />
-                  <div
-                    className={`block w-10 h-6 rounded-full ${
-                      useInternet && !useLudicrousMode
-                        ? "bg-green-500"
-                        : "bg-gray-300"
-                    }`}
-                  ></div>
-                  <div
-                    className={`absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition ${
-                      useInternet && !useLudicrousMode
-                        ? "transform translate-x-full"
-                        : ""
-                    }`}
-                  ></div>
-                </div>
-                <div className="ml-3 text-sm">Use Internet Results</div>
-              </label>
-            </div>
+          <DropdownMenuItem
+            className="flex space-x-3 items-center mb-2"
+            onClick={(e) => handleEvent(e, "internet")}
+          >
+            <Switch checked={useInternet} onCheckedChange={onInternetToggle} />
+            <span className="text-lg">Internet</span>
           </DropdownMenuItem>
-          <DropdownMenuItem>
-            <div className="flex items-center mb-2">
-              <label
-                htmlFor="photos-toggle"
-                className="flex items-center cursor-pointer"
-              >
-                <div
-                  className={`relative ${
-                    useLudicrousMode ? "opacity-50 cursor-not-allowed" : ""
-                  }`}
-                >
-                  <input
-                    type="checkbox"
-                    id="photos-toggle"
-                    className="sr-only"
-                    checked={usePhotos && !useLudicrousMode}
-                    onChange={onPhotosToggle}
-                    disabled={useLudicrousMode}
-                  />
-                  <div
-                    className={`block w-10 h-6 rounded-full ${
-                      usePhotos && !useLudicrousMode
-                        ? "bg-green-500"
-                        : "bg-gray-300"
-                    }`}
-                  ></div>
-                  <div
-                    className={`absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition ${
-                      usePhotos && !useLudicrousMode
-                        ? "transform translate-x-full"
-                        : ""
-                    }`}
-                  ></div>
-                </div>
-                <div className="ml-3 text-sm">Use Photos</div>
-              </label>
-            </div>
+          <DropdownMenuItem
+            className="flex space-x-3 items-center mb-2"
+            onClick={(e) => handleEvent(e, "photos")}
+          >
+            <Switch checked={usePhotos} onCheckedChange={onPhotosToggle} />
+            <span className="text-lg">Photos</span>
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

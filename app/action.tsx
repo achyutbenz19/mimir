@@ -46,7 +46,7 @@ async function action(obj: FormData): Promise<any> {
     const useTTS = formData.get("useTTS") === "true";
     const useInternet = formData.get("useInternet") === "true";
     const usePhotos = formData.get("usePhotos") === "true";
-    const useLudicrousMode = formData.get("useLudicrousMode") === "true";
+    const useBasicMode = formData.get("useBasicMode") === "true";
     if (!(audioBlob instanceof Blob)) throw new Error("No audio detected");
 
     const timestamp = Date.now();
@@ -54,7 +54,7 @@ async function action(obj: FormData): Promise<any> {
     streamable.update({ transcription: transcription });
 
     let responseText = "";
-    if (useLudicrousMode) {
+    if (useBasicMode) {
       const result = await generateChatCompletion(transcription);
       if (result !== undefined) {
         responseText = result;

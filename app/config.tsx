@@ -29,7 +29,7 @@ export const config = {
   enableInternetResultsUIToggle: true, // Display the internet results UI toggle
   enableUsePhotUIToggle: true, // Display the use photo UI toggle
   enabledRabbitMode: true, // Enable the rabbit mode UI toggle
-  enabledLudicrousMode: true, // Enable the ludicrous mode UI toggle
+  enabledBasicMode: true, // Enable the basic mode UI toggle
   useAttributionComponent: false, // Use the attribution component to display the attribution of the AI models/services used
 
   // Rate limiting settings
