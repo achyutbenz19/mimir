@@ -4,16 +4,12 @@ import { SpotifyTrack } from "./tools/Spotify";
 import { WeatherData } from "./tools/Weather";
 import { ClockComponent } from "./tools/Clock";
 
-const GeneratedUI = ({
-  currentUIComponent,
-  useSpotify,
-  useRabbitMode,
-}: GeneratedUIProps) => {
+const GeneratedUI = ({ currentUIComponent, useSpotify }: GeneratedUIProps) => {
   return (
-    <div className="my-5 border">
-      {!useSpotify && (
+    <div className="my-5">
+      {useSpotify && (
         <div className="max-w-3xl">
-          <SpotifyTrack trackId={"4kjI1gwQZRKNDkw1nI475M"} />
+          <SpotifyTrack trackId={useSpotify} />
         </div>
       )}
       {currentUIComponent && currentUIComponent.component === "weather" && (

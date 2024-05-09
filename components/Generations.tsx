@@ -1,6 +1,6 @@
 import { GeneratedUIProps } from "@/lib/types";
 import GeneratedUI from "./GeneratedUI";
-import { StreamText } from "./tools/StreamText";
+import { StreamText } from "./StreamText";
 
 const Generation = ({
   transcription,
