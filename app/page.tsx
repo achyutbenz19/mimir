@@ -51,6 +51,16 @@ const Main = () => {
     );
   }
 
+  const handleClick = (suggestion: string) => {
+    const formData = new FormData();
+    formData.append("text", suggestion);
+    formData.append("useTTS", String(useTTS));
+    formData.append("useInternet", String(useInternet));
+    formData.append("usePhotos", String(usePhotos));
+    formData.append("useBasicMode", String(useBasicMode));
+    handleSubmit(formData);
+  };
+
   const handleSubmit = async (formData: FormData) => {
     const startTime = Date.now();
     const streamableValue = await action(formData);
@@ -131,6 +141,7 @@ const Main = () => {
         useSpotify={useSpotify}
         useRabbitMode={useRabbitMode}
         totalResponseTime={totalResponseTime!}
+        handleClick={handleClick}
       />
       <InputComponent
         onSubmit={handleSubmit}

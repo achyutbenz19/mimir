@@ -11,6 +11,7 @@ const Generation = ({
   useSpotify,
   currentUIComponent,
   totalResponseTime,
+  handleClick,
 }: GeneratedUIProps) => {
   return (
     <div className="flex-col z-[20] flex h-full max-h-[calc(100vh-160px)] justify-between text-2xl flex-1 break-words items-center">
@@ -28,7 +29,7 @@ const Generation = ({
           </div>
         </>
       )}
-      {message === undefined && <Hero />}
+      {message === undefined && <Hero handleClick={handleClick!} />}
       {message === null && (
         <div className="flex mt-20 w-full h-full justify-center items-center">
           <Spinner />

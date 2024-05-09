@@ -51,6 +51,8 @@ export const Settings: React.FC<SettingsProps> = ({
     }
   };
 
+  console.log(useTTS);
+
   return (
     <div className="md:bottom-10 md:top-auto z-[20] top-5 left-5 font-normal md:left-10 font-sans absolute">
       <DropdownMenu>

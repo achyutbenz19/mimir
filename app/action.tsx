@@ -47,10 +47,11 @@ async function action(obj: FormData): Promise<any> {
     const useInternet = formData.get("useInternet") === "true";
     const usePhotos = formData.get("usePhotos") === "true";
     const useBasicMode = formData.get("useBasicMode") === "true";
-    if (!(audioBlob instanceof Blob)) throw new Error("No audio detected");
 
     const timestamp = Date.now();
-    const transcription = await transcribeAudio(audioBlob, timestamp);
+    const transcription = audioBlob
+      ? await transcribeAudio(audioBlob as Blob, timestamp)
+      : (formData.get("text") as string);
     streamable.update({ transcription: transcription });
 
     let responseText = "";

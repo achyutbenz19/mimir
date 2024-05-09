@@ -35,6 +35,7 @@ export interface GeneratedUIProps {
   useSpotify?: string;
   useRabbitMode?: boolean;
   totalResponseTime?: number;
+  handleClick?: (suggestion: string) => void;
 }
 
 export interface SettingsProps {
@@ -73,4 +74,8 @@ export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   asChild?: boolean;
+}
+
+export interface ClickProps {
+  handleClick: (suggestion: string) => void;
 }
