@@ -12,7 +12,7 @@ const Generation = ({
   totalResponseTime,
 }: GeneratedUIProps) => {
   return (
-    <div className="flex-col flex h-full max-h-[calc(100vh-160px)] justify-between text-2xl flex-1 break-words items-center">
+    <div className="flex-col z-[20] flex h-full max-h-[calc(100vh-160px)] justify-between text-2xl flex-1 break-words items-center">
       {message && (
         <>
           <div className="flex leading-2 mt-20 justify-center max-h-[40%] overflow-y-auto text-3xl items-center w-full max-w-3xl text-center">

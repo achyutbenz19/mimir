@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`font-serif mx-10 tracking-wide`}>
+      <body className={`font-serif selection:bg-rose-400 mx-10 tracking-wide`}>
         <ThemeProvider attribute="class">
           <AI>
             <main>
