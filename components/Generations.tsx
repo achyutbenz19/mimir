@@ -3,6 +3,7 @@ import GeneratedUI from "./GeneratedUI";
 import { StreamText } from "./StreamText";
 import Hero from "./Hero";
 import Spinner from "./Spinner";
+import { Gauge } from "lucide-react";
 
 const Generation = ({
   transcription,
@@ -33,8 +34,13 @@ const Generation = ({
           <Spinner />
         </div>
       )}
-      <span className="text-lg hidden md:block md:text-sm absolute md:bottom-10 md:right-10 text-neutral-400">
-        {totalResponseTime && `generated in ${totalResponseTime.toFixed(3)}ms`}
+      <span className="text-lg hidden md:block md:text-sm absolute md:top-10 md:right-10 text-neutral-400">
+        {totalResponseTime && (
+          <div className="flex space-x-2 items-end h-full flex-row">
+            <Gauge className="h-5 w-5" />
+            <span>{totalResponseTime.toFixed(3)}s</span>
+          </div>
+        )}
       </span>
     </div>
   );

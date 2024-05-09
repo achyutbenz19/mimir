@@ -1,8 +1,7 @@
 "use client";
 import { useState, useRef } from "react";
-import { useDropzone, DropzoneOptions } from "react-dropzone";
 import { Button } from "./ui/button";
-import { MicIcon } from "lucide-react";
+import { FileUp, FileX2, MicIcon } from "lucide-react";
 import { motion } from "framer-motion";
 import { InputComponentProps } from "@/lib/types";
 import { cn } from "@/lib/utils";
@@ -18,21 +17,13 @@ const InputComponent: React.FC<InputComponentProps> = ({
   const [recording, setRecording] = useState(false);
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const chunksRef = useRef<Blob[]>([]);
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
 
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({
-    onDrop: (acceptedFiles) => {
-      setSelectedImage(acceptedFiles[0]);
-    },
-    accept: {
-      "image/png": [".png"],
-      "image/jpeg": [".jpeg", ".jpg"],
-      "image/webp": [".webp"],
-      "image/gif": [".gif"],
-    },
-  } as DropzoneOptions);
-
-  const removeImage = () => {
-    setSelectedImage(null);
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const files = event.target.files;
+    if (files && files[0]) {
+      setSelectedImage(files[0]);
+    }
   };
 
   const toggleRecording = () => {
@@ -79,34 +70,54 @@ const InputComponent: React.FC<InputComponentProps> = ({
   };
 
   return (
-    <div
-      className={
-        "flex z-[20] w-full flex-col items-center my-10 justify-center"
-      }
-    >
-      {recording && (
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
-          className="mb-5 tracking-wider font-semi-bold text-xl"
-        >
-          Listening...
-        </motion.div>
-      )}
-      <div className="flex items-center justify-center w-full max-w-md">
-        <Button
-          onClick={toggleRecording}
-          className={cn(
-            "flex items-center justify-center w-full h-20 rounded-full",
-            recording && "bg-accent",
-          )}
-          variant="outline"
-        >
-          <MicIcon className="w-8 h-8" />
-        </Button>
+    <>
+      <div className="w-full z-[20] flex items-center flex-col my-10">
+        {recording && (
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className="mb-5 tracking-wider font-semi-bold text-xl"
+          >
+            Listening...
+          </motion.div>
+        )}
+        <div className="flex items-center justify-center w-full max-w-md">
+          <Button
+            onClick={toggleRecording}
+            className={cn(
+              "flex items-center justify-center w-full h-20 rounded-full",
+              recording && "bg-accent",
+            )}
+            variant="outline"
+          >
+            <MicIcon className="w-8 h-8" />
+          </Button>
+        </div>
       </div>
-    </div>
+      <div>
+        <input
+          ref={fileInputRef}
+          type="file"
+          accept=".png,.jpeg,.jpg,.webp,.gif"
+          style={{ display: "none" }}
+          onChange={handleFileChange}
+        />
+      </div>
+      {usePhotos && (
+        <Button
+          variant="ghost"
+          className="absolute bottom-10 z-20 right-10 sm:rounded-full rounded-full py-6"
+          onClick={() => {
+            selectedImage
+              ? setSelectedImage(null)
+              : fileInputRef.current && fileInputRef.current.click();
+          }}
+        >
+          {selectedImage ? <FileX2 /> : <FileUp />}
+        </Button>
+      )}
+    </>
   );
 };
 
