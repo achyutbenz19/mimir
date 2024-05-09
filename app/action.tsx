@@ -3,7 +3,6 @@ import { createAI, createStreamableValue, createStreamableUI } from "ai/rsc";
 import { config } from "./config";
 import dotenv from "dotenv";
 dotenv.config();
-// Rate limiting
 import { Ratelimit } from "@upstash/ratelimit";
 import { Redis } from "@upstash/redis";
 import { headers } from "next/headers";
@@ -21,10 +20,9 @@ let ratelimit: Ratelimit | undefined;
 if (config.useRateLimiting) {
   ratelimit = new Ratelimit({
     redis: Redis.fromEnv(),
-    limiter: Ratelimit.slidingWindow(10, "10 m"), // 10 requests per 10 minutes
+    limiter: Ratelimit.slidingWindow(10, "10 m"),
   });
 }
-// Rate limiting
 
 async function action(obj: FormData): Promise<any> {
   "use server";
@@ -89,6 +87,7 @@ async function action(obj: FormData): Promise<any> {
         }
 
         const tool_results = await chatCompletionWithTools(responseText);
+
         if (tool_results?.uiComponent) {
           if (tool_results.uiComponent.component === "weather") {
             streamable.update({ weather: tool_results.uiComponent.data });

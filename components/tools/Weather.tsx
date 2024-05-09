@@ -7,7 +7,6 @@ interface WeatherDataItem {
 }
 
 const getWeatherIcon = (temperature: number) => {
-  // mock icons for now
   if (temperature >= 25) {
     return <WiDaySunny className="weather-icon text-yellow-500 text-2xl" />;
   } else if (temperature >= 10) {
@@ -38,13 +37,11 @@ export const WeatherData: React.FC<WeatherDataProps> = ({ data }) => {
   const currentTime = new Date();
   const currentHour = currentTime.getHours();
 
-  // Find the index of the current hour in the data array
   const currentIndex = data.findIndex((item) => {
     const itemTime = new Date(item.time);
     return itemTime.getHours() === currentHour;
   });
 
-  // Slice the data array starting from the current index
   const slicedData = data.slice(currentIndex);
 
   return (

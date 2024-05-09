@@ -8,7 +8,7 @@ export const SpotifyTrack = ({
   height?: number;
 }) => {
   if (!trackId) {
-    return null; // or return a loading state or error message
+    return null;
   }
 
   return (
@@ -18,6 +18,6 @@ export const SpotifyTrack = ({
       height={height}
       frameBorder="0"
       allow="encrypted-media"
-    ></iframe>
+    />
   );
 };

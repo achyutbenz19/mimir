@@ -1,7 +1,5 @@
 import { ChatOpenAI } from "@langchain/openai";
 import { ChatGroq } from "@langchain/groq";
-
-// tools
 import { getCurrentWeather } from "./tools/getWeather";
 import { searchSong } from "./tools/getSpotify";
 import { getTime } from "./tools/getTime";

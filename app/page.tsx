@@ -101,8 +101,6 @@ const Main = () => {
     setTotalResponseTime(totalResponseTime);
   };
 
-  console.log(useSpotify)
-
   return (
     <div>
       {currentTranscription?.transcription}
@@ -116,7 +114,12 @@ const Main = () => {
         useLudicrousMode={true}
         useRabbitMode={true}
       />
-      <GeneratedUI message={message!} currentUIComponent={currentUIComponent!} useSpotify={useSpotify} useRabbitMode={useRabbitMode} />
+      <GeneratedUI
+        message={message!}
+        currentUIComponent={currentUIComponent!}
+        useSpotify={useSpotify}
+        useRabbitMode={useRabbitMode}
+      />
     </div>
   );
 };
