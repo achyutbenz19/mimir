@@ -1,11 +1,12 @@
 "use client";
 import InputComponent from "@/components/InputComponent";
 import { useActions, readStreamableValue } from "ai/rsc";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AI } from "./action";
 import { UIComponent, Message } from "@/lib/types";
 import Generation from "@/components/Generations";
 import { Settings } from "@/components/Settings";
+import Spinner from "@/components/Spinner";
 
 const Main = () => {
   const { action } = useActions<typeof AI>();
@@ -36,6 +37,19 @@ const Main = () => {
     | null
     | undefined
   >(undefined);
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  if (!isClient) {
+    return (
+      <div className="h-screen w-full flex items-center justify-center">
+        <Spinner />
+      </div>
+    );
+  }
 
   const handleSubmit = async (formData: FormData) => {
     const startTime = Date.now();

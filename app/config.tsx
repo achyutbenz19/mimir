@@ -6,11 +6,11 @@ export const config = {
   whisperModel: "whisper-1", // Groq: 'whisper-large-v3' OpenAI: 'whisper-1'
 
   ttsModelProvider: "openai", // only openai supported for now...
-  ttsModel: "tts-1", // only openai supported for now...s
+  ttsModel: "tts-1", // only openai supported for now...
   ttsvoice: "alloy", // only openai supported for now... [alloy, echo, fable, onyx, nova, and shimmer]
 
   visionModelProvider: "openai", // 'openai' or 'fal.ai'
-  visionModel: "gpt-4-vision", // OpenAI: 'gpt-4-vision' Fal.ai: 'llava-next'
+  visionModel: "gpt-4-turbo", // OpenAI: 'gpt-4-turbo' Fal.ai: 'llava-next'
 
   functionCallingModelProvider: "openai", // 'openai' current only
   functionCallingModel: "gpt-3.5-turbo", // OpenAI: 'gpt-3-5-turbo'
