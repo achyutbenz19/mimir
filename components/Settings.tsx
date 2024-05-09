@@ -33,7 +33,7 @@ export const Settings: React.FC<SettingsProps> = ({
   };
 
   return (
-    <div className="md:bottom-10 top-5 left-5 font-normal md:left-10 font-sans absolute">
+    <div className="md:bottom-10 md:top-auto top-5 left-5 font-normal md:left-10 font-sans absolute">
       <DropdownMenu>
         <DropdownMenuTrigger>
           <Button variant="ghost" className="py-6">
@@ -56,14 +56,12 @@ export const Settings: React.FC<SettingsProps> = ({
                     onChange={handleLudicrousModeToggle}
                   />
                   <div
-                    className={`block w-10 h-6 rounded-full ${
-                      useLudicrousMode ? "bg-green-500" : "bg-gray-300"
-                    }`}
+                    className={`block w-10 h-6 rounded-full ${useLudicrousMode ? "bg-green-500" : "bg-gray-300"
+                      }`}
                   ></div>
                   <div
-                    className={`absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition ${
-                      useLudicrousMode ? "transform translate-x-full" : ""
-                    }`}
+                    className={`absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition ${useLudicrousMode ? "transform translate-x-full" : ""
+                      }`}
                   ></div>
                 </div>
                 <div className="ml-3 text-sm">Ludicrous Mode</div>
@@ -77,9 +75,8 @@ export const Settings: React.FC<SettingsProps> = ({
                 className="flex items-center cursor-pointer"
               >
                 <div
-                  className={`relative ${
-                    useLudicrousMode ? "opacity-50 cursor-not-allowed" : ""
-                  }`}
+                  className={`relative ${useLudicrousMode ? "opacity-50 cursor-not-allowed" : ""
+                    }`}
                 >
                   <input
                     type="checkbox"
@@ -90,18 +87,16 @@ export const Settings: React.FC<SettingsProps> = ({
                     disabled={useLudicrousMode}
                   />
                   <div
-                    className={`block w-10 h-6 rounded-full ${
-                      useTTS && !useLudicrousMode
+                    className={`block w-10 h-6 rounded-full ${useTTS && !useLudicrousMode
                         ? "bg-green-500"
                         : "bg-gray-300"
-                    }`}
+                      }`}
                   ></div>
                   <div
-                    className={`absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition ${
-                      useTTS && !useLudicrousMode
+                    className={`absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition ${useTTS && !useLudicrousMode
                         ? "transform translate-x-full"
                         : ""
-                    }`}
+                      }`}
                   ></div>
                 </div>
                 <div className="ml-3 text-sm">Text-to-Speech</div>
@@ -115,9 +110,8 @@ export const Settings: React.FC<SettingsProps> = ({
                 className="flex items-center cursor-pointer"
               >
                 <div
-                  className={`relative ${
-                    useLudicrousMode ? "opacity-50 cursor-not-allowed" : ""
-                  }`}
+                  className={`relative ${useLudicrousMode ? "opacity-50 cursor-not-allowed" : ""
+                    }`}
                 >
                   <input
                     type="checkbox"
@@ -128,18 +122,16 @@ export const Settings: React.FC<SettingsProps> = ({
                     disabled={useLudicrousMode}
                   />
                   <div
-                    className={`block w-10 h-6 rounded-full ${
-                      useInternet && !useLudicrousMode
+                    className={`block w-10 h-6 rounded-full ${useInternet && !useLudicrousMode
                         ? "bg-green-500"
                         : "bg-gray-300"
-                    }`}
+                      }`}
                   ></div>
                   <div
-                    className={`absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition ${
-                      useInternet && !useLudicrousMode
+                    className={`absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition ${useInternet && !useLudicrousMode
                         ? "transform translate-x-full"
                         : ""
-                    }`}
+                      }`}
                   ></div>
                 </div>
                 <div className="ml-3 text-sm">Use Internet Results</div>
@@ -153,9 +145,8 @@ export const Settings: React.FC<SettingsProps> = ({
                 className="flex items-center cursor-pointer"
               >
                 <div
-                  className={`relative ${
-                    useLudicrousMode ? "opacity-50 cursor-not-allowed" : ""
-                  }`}
+                  className={`relative ${useLudicrousMode ? "opacity-50 cursor-not-allowed" : ""
+                    }`}
                 >
                   <input
                     type="checkbox"
@@ -166,18 +157,16 @@ export const Settings: React.FC<SettingsProps> = ({
                     disabled={useLudicrousMode}
                   />
                   <div
-                    className={`block w-10 h-6 rounded-full ${
-                      usePhotos && !useLudicrousMode
+                    className={`block w-10 h-6 rounded-full ${usePhotos && !useLudicrousMode
                         ? "bg-green-500"
                         : "bg-gray-300"
-                    }`}
+                      }`}
                   ></div>
                   <div
-                    className={`absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition ${
-                      usePhotos && !useLudicrousMode
+                    className={`absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition ${usePhotos && !useLudicrousMode
                         ? "transform translate-x-full"
                         : ""
-                    }`}
+                      }`}
                   ></div>
                 </div>
                 <div className="ml-3 text-sm">Use Photos</div>
