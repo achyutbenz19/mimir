@@ -1,4 +1,4 @@
-import { WeatherDataItem, WeatherDataProps } from "@/lib/types";
+import { WeatherDataProps } from "@/lib/types";
 import React from "react";
 import { WiDaySunny, WiCloudy, WiRain, WiSnow } from "react-icons/wi";
 

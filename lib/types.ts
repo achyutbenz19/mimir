@@ -1,3 +1,6 @@
+import { buttonVariants } from "@/components/ui/button";
+import { VariantProps } from "class-variance-authority";
+
 export interface UIComponent {
   component: string;
   data: any;
@@ -57,4 +60,16 @@ export interface WeatherDataItem {
 
 export interface WeatherDataProps {
   data: WeatherDataItem[];
+}
+
+export interface AttributionComponentProps {
+  usePhotos: boolean;
+  useInternet: boolean;
+  useTTS: boolean;
+}
+
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof buttonVariants> {
+  asChild?: boolean;
 }

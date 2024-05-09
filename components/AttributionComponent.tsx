@@ -1,11 +1,6 @@
 import React from "react";
 import { config } from "@/app/config";
-
-interface AttributionComponentProps {
-  usePhotos: boolean;
-  useInternet: boolean;
-  useTTS: boolean;
-}
+import { AttributionComponentProps } from "@/lib/types";
 
 export const AttributionComponent: React.FC<AttributionComponentProps> = ({
   usePhotos,
