@@ -23,25 +23,27 @@ export const answerEngine = traceable(
 
     async function searchEngineForSources(message: string) {
       const rephrasedMessage = await rephraseInput(message);
-      const data = JSON.stringify({
-        q: rephrasedMessage,
-      });
-      try {
+      if (config.searchEngine === "BRAVE") {
+        const response = await fetch(`https://api.search.brave.com/res/v1/web/search?q=${encodeURIComponent(rephrasedMessage)}`, {
+          headers: {
+            'Accept': 'application/json',
+            'Accept-Encoding': 'gzip',
+            'Content-Type': 'application/json',
+            'X-Subscription-Token': process.env.BRAVE_API_KEY as string,
+          },
+        });
+        return response.json();
+      } else {
+        const data = JSON.stringify({ q: rephrasedMessage });
         const response = await fetch("https://google.serper.dev/search", {
           method: "POST",
           headers: {
-            "X-API-KEY": process.env.SERPER_API || "",
+            "X-API-KEY": process.env.SERPER_API_KEY!,
             "Content-Type": "application/json",
           },
           body: data,
         });
-        if (response.status === 403) {
-          throw new Error("Forbidden");
-        }
-        const docs = await response.json();
-        return docs;
-      } catch (error) {
-        throw error;
+        return response.json();
       }
     }
 

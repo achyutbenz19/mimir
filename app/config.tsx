@@ -27,4 +27,6 @@ export const config = {
   useRateLimiting: false, // Use Upstash rate limiting to limit the number of requests per user
 
   useLangSmith: true, // Use LangSmith by Langchain to trace the execution of the functions in the config.tsx set to true to use.
+
+  searchEngine: "BRAVE" // Use Brave or Serper
 };
