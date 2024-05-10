@@ -24,14 +24,19 @@ export const answerEngine = traceable(
     async function searchEngineForSources(message: string) {
       const rephrasedMessage = await rephraseInput(message);
       if (config.searchEngine === "BRAVE") {
-        const response = await fetch(`https://api.search.brave.com/res/v1/web/search?q=${encodeURIComponent(rephrasedMessage)}`, {
-          headers: {
-            'Accept': 'application/json',
-            'Accept-Encoding': 'gzip',
-            'Content-Type': 'application/json',
-            'X-Subscription-Token': process.env.BRAVE_API_KEY as string,
+        const response = await fetch(
+          `https://api.search.brave.com/res/v1/web/search?q=${encodeURIComponent(
+            rephrasedMessage,
+          )}`,
+          {
+            headers: {
+              Accept: "application/json",
+              "Accept-Encoding": "gzip",
+              "Content-Type": "application/json",
+              "X-Subscription-Token": process.env.BRAVE_API_KEY as string,
+            },
           },
-        });
+        );
         return response.json();
       } else {
         const data = JSON.stringify({ q: rephrasedMessage });

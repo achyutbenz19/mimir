@@ -10,9 +10,9 @@ import Spinner from "@/components/Spinner";
 
 const Main = () => {
   const { action } = useActions<typeof AI>();
-  const [useBasicMode, setUseBasicMode] = useState(true);
-  const [useTTS, setUseTTS] = useState(false);
-  const [useInternet, setUseInternet] = useState(false);
+  const [useBasicMode, setUseBasicMode] = useState(false);
+  const [useTTS, setUseTTS] = useState(true);
+  const [useInternet, setUseInternet] = useState(true);
   const [usePhotos, setUsePhotos] = useState(false);
   const [useRabbitMode, setuseRabbitMode] = useState(false);
   const [useSpotify, setUseSpotify] = useState("");
