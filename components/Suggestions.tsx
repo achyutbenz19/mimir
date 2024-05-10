@@ -2,7 +2,7 @@ import { ClickProps } from "@/lib/types";
 
 export const suggestions = [
   "What is the time right now?",
-  'Play "Blinding Lights" by the Weednd',
+  'Play "Blinding Lights" by the Weeknd.',
   "What is the weather in Chicago?",
 ];
 
