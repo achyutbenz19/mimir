@@ -12,7 +12,7 @@ const tool_calls = new ChatOpenAI({
       function: {
         name: "getCurrentWeather",
         description:
-          "Retrieves the current weather conditions for a given city based on its latitude and longitude coordinates.",
+          "Retrieves the current weather conditions for a given city.",
         parameters: {
           type: "object",
           properties: {
@@ -27,7 +27,7 @@ const tool_calls = new ChatOpenAI({
                 "The longitude coordinate of the city in decimal degrees.",
             },
           },
-          required: ["latitude", "longitude"],
+          required: ["city"],
         },
       },
     },
@@ -70,7 +70,7 @@ export const chatCompletionWithTools = async (query: string) => {
   const res = await tool_calls.invoke([
     [
       "system",
-      "You are a helpful assistant and only responds in 1-2 sentences. Max number of words is 30. Use the tools included only if they are relevant to the query. .",
+      "You are a helpful assistant and only responds in 1-2 sentences. Max number of words is 30. Use the tools included only if they are relevant to the query.",
     ],
     ["human", query],
   ]);
