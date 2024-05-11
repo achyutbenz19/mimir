@@ -132,8 +132,21 @@ const Main = () => {
     setTotalResponseTime(totalResponseTime);
   };
 
+  const handleReset = () => {
+    setTotalResponseTime(null);
+    setCurrentTranscription(null);
+    setCurrentUIComponent(null);
+    setMessage(undefined);
+  };
+
   return (
     <div className="flex-col flex h-screen">
+      <div
+        className="absolute cursor-pointer w-fit z-30 top-10 md:left-10 right-10"
+        onClick={handleReset}
+      >
+        Mimir
+      </div>
       <Generation
         transcription={currentTranscription?.transcription!}
         message={message!}
