@@ -17,14 +17,14 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`font-serif selection:bg-rose-400 mx-10 tracking-wide`}>
-          <ThemeProvider attribute="class">
-            <AI>
-              <main>
-                {children}
-                <Analytics />
-              </main>
-            </AI>
-          </ThemeProvider>
+        <ThemeProvider attribute="class">
+          <AI>
+            <main>
+              {children}
+              <Analytics />
+            </main>
+          </AI>
+        </ThemeProvider>
       </body>
     </html>
   );

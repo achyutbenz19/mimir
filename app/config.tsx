@@ -28,5 +28,5 @@ export const config = {
 
   useLangSmith: true, // Use LangSmith by Langchain to trace the execution of the functions in the config.tsx set to true to use.
 
-  searchEngine: "SERPER", // Use Brave or Serper
+  searchEngine: "BRAVE", // Use Brave or Serper
 };

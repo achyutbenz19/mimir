@@ -27,13 +27,13 @@ export const answerEngine = traceable(
         const response = await fetch(
           `https://api.search.brave.com/res/v1/web/search?q=${encodeURIComponent(
             rephrasedMessage,
-          )}`,
+          )}&count=1`,
           {
             headers: {
               Accept: "application/json",
               "Accept-Encoding": "gzip",
-              "Content-Type": "application/json",
-              "X-Subscription-Token": process.env.BRAVE_API_KEY as string,
+              "X-Subscription-Token": process.env
+                .BRAVE_SEARCH_API_KEY as string,
             },
           },
         );
