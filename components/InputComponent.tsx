@@ -107,7 +107,7 @@ const InputComponent: React.FC<InputComponentProps> = ({
       {usePhotos && (
         <Button
           variant="ghost"
-          className="absolute bottom-10 z-20 right-10 sm:rounded-full rounded-full py-6"
+          className="relative sm:absolute sm:bottom-10 z-20 mb-5 sm:mb-0 sm:right-10 sm:rounded-full rounded-full py-6"
           onClick={() => {
             selectedImage
               ? setSelectedImage(null)
