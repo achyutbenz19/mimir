@@ -12,7 +12,7 @@ const Suggestions = ({ handleClick }: ClickProps) => {
       {suggestions.map((suggestion, index) => (
         <div
           key={index}
-          className="border cursor-pointer hover:bg-muted text-sm rounded-full p-2"
+          className="border cursor-pointer hover:bg-muted drop-shadow-sm text-sm rounded-full p-2"
           onClick={() => handleClick(suggestion)}
         >
           {suggestion}
