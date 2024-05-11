@@ -3,7 +3,6 @@ import "./globals.css";
 import { ThemeProvider } from "next-themes";
 import { Analytics } from "@vercel/analytics/react";
 import { AI } from "./action";
-import { ClerkProvider } from "@clerk/nextjs";
 
 export const metadata: Metadata = {
   title: "Mimir",
@@ -18,7 +17,6 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`font-serif selection:bg-rose-400 mx-10 tracking-wide`}>
-        <ClerkProvider>
           <ThemeProvider attribute="class">
             <AI>
               <main>
@@ -27,7 +25,6 @@ export default function RootLayout({
               </main>
             </AI>
           </ThemeProvider>
-        </ClerkProvider>
       </body>
     </html>
   );
