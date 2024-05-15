@@ -32,8 +32,7 @@ export const answerEngine = traceable(
             headers: {
               Accept: "application/json",
               "Accept-Encoding": "gzip",
-              "X-Subscription-Token": process.env
-                .BRAVE_SEARCH_API_KEY as string,
+              "X-Subscription-Token": process.env.BRAVE_API_KEY as string,
             },
           },
         );
