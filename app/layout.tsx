@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
-import { Analytics } from "@vercel/analytics/react";
 import { AI } from "./action";
 
 export const metadata: Metadata = {
@@ -21,7 +20,6 @@ export default function RootLayout({
           <AI>
             <main>
               {children}
-              <Analytics />
             </main>
           </AI>
         </ThemeProvider>
