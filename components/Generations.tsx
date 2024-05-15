@@ -13,6 +13,15 @@ const Generation = ({
   totalResponseTime,
   handleClick,
 }: GeneratedUIProps) => {
+
+  if (message === null) {
+    return (
+      <div className="flex mt-20 w-full h-full justify-center items-center">
+        <Spinner />
+      </div>
+    );
+  }
+
   return (
     <div className="flex-col z-[20] flex h-full max-h-[calc(100vh-160px)] justify-between text-2xl flex-1 break-words items-center">
       {message && (
@@ -30,11 +39,6 @@ const Generation = ({
         </>
       )}
       {message === undefined && <Hero handleClick={handleClick!} />}
-      {message === null && (
-        <div className="flex mt-20 w-full h-full justify-center items-center">
-          <Spinner />
-        </div>
-      )}
       <div className="text-lg mt-10 hidden md:block md:text-sm absolute md:top-10 md:right-10 text-neutral-400">
         {totalResponseTime && (
           <div className="flex space-x-2 items-end h-full flex-row">
