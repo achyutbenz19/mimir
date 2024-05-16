@@ -87,13 +87,13 @@ export const Settings: React.FC<SettingsProps> = ({
             <Switch checked={useInternet} onCheckedChange={onInternetToggle} />
             <span>Internet</span>
           </DropdownMenuItem>
-          <DropdownMenuItem
+          {/* <DropdownMenuItem
             className="flex space-x-3 items-center"
             onClick={(e) => handleEvent(e, "photos")}
           >
             <Switch checked={usePhotos} onCheckedChange={onPhotosToggle} />
             <span>Photos</span>
-          </DropdownMenuItem>
+          </DropdownMenuItem> */}
         </DropdownMenuContent>
       </DropdownMenu>
     </div>
